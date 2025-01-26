@@ -6,22 +6,19 @@
 /*   By: aromani <aromani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 10:17:56 by aromani           #+#    #+#             */
-/*   Updated: 2025/01/26 19:48:30 by aromani          ###   ########.fr       */
+/*   Updated: 2025/01/26 21:55:51 by aromani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PIPEX_H
 # define PIPEX_H
 
-# include <unistd.h>
-# include <strings.h>
 # include "ft_printf.h"
-# include <stdlib.h>
-# include <stdio.h>
-# include <errno.h>
+# include <unistd.h>
 # include <sys/wait.h>
+# include <stdlib.h>
+# include <fcntl.h>
 # include <stdio.h>
-# include <libc.h>
 
 int		ft_searchh(char *str, int c);
 size_t	count_words(char const *str, int sep);

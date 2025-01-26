@@ -6,7 +6,7 @@
 /*   By: aromani <aromani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 10:17:56 by aromani           #+#    #+#             */
-/*   Updated: 2025/01/26 20:31:34 by aromani          ###   ########.fr       */
+/*   Updated: 2025/01/26 21:56:29 by aromani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,11 @@
 
 # include "ft_printf.h"
 # include "get_next_line.h"
+# include <unistd.h>
 # include <sys/wait.h>
-
-# include <libc.h>
+# include <stdlib.h>
+# include <fcntl.h>
+# include <stdio.h>
 
 size_t	count_words(char const *str, int sep);
 size_t	ft_strcpy(char *dst, char const *src, size_t index, char c);

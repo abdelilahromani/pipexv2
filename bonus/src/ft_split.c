@@ -6,7 +6,7 @@
 /*   By: aromani <aromani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 10:17:33 by aromani           #+#    #+#             */
-/*   Updated: 2025/01/18 19:49:27 by aromani          ###   ########.fr       */
+/*   Updated: 2025/01/26 21:48:50 by aromani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,13 +67,3 @@ char	**ft_split(char const *s, char c)
 	str = filler(str, s, c, len);
 	return (str);
 }
-
-// void f(){system("leaks a.out");}
-// int main()
-// {
-//     char **str = ft_split("ls -la",' ');
-//     ft_printf("%s\n",str[0]);
-//     ft_printf("%s",str[1]);
-//     ft_printf("%s",str[2]);
-//     f();
-// }

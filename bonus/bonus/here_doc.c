@@ -6,15 +6,13 @@
 /*   By: aromani <aromani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 17:35:42 by aromani           #+#    #+#             */
-/*   Updated: 2025/01/26 16:18:33 by aromani          ###   ########.fr       */
+/*   Updated: 2025/01/26 20:13:38 by aromani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include "../includes/pipex.h"
 #include "../includes/pipex.h"
-#include <stdio.h>
 
-int ft_strcmp(char *s1,char *s2)
+int	ft_strcmp(char *s1, char *s2)
 {
 	int	i;
 
@@ -28,15 +26,17 @@ int ft_strcmp(char *s1,char *s2)
 	return (s1[i] - s2[i]);
 }
 
-char *withoutnewline(char *line)
+char	*withoutnewline(char *line)
 {
-	char *str;
-	size_t		i;
-	size_t		j;
+	char	*str;
+	size_t	i;
+	size_t	j;
 
-	j = ft_strlen(line);
+	j = ft_strlen (line);
 	i = 0;
 	str = malloc (j);
+	if (!str)
+		return (NULL);
 	while (line[i] && i < j)
 	{
 		str[i] = line[i];
@@ -46,31 +46,33 @@ char *withoutnewline(char *line)
 	return (str);
 }
 
-void writer(char *line,int fd)
+void	writer(char *line, int fd)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (line[i])
-		write (fd,&line[i++],1);
+		write (fd, &line[i++], 1);
 	return ;
 }
 
-char * here_doc_reader(char **av,int fd)
+char	*here_doc_reader(char **av, int fd)
 {
-	char *line;
-	char *tmp;
-	char *tmp2;
+	char	*line;
+	char	*tmp;
+	char	*tmp2;
 
-	write (1,"heredoc>",9);
+	write (1, "heredoc>", 9);
 	line = get_next_line(0);
 	if (!line)
 		return (NULL);
 	tmp = withoutnewline(line);
-	if (ft_strcmp(tmp,av[2]) == 0)
-		return (free(tmp),free(line),NULL);
+	if (!tmp)
+		return (free(line), NULL);
+	if (ft_strcmp(tmp, av[2]) == 0)
+		return (free(tmp), free(line), NULL);
 	free(tmp);
-	if (line != NULL && ft_strcmp(line,av[2]) != 0)
+	if (line != NULL && ft_strcmp(line, av[2]) != 0)
 	{
 		tmp2 = line;
 		writer(tmp2, fd);
@@ -79,9 +81,9 @@ char * here_doc_reader(char **av,int fd)
 	return (line);
 }
 
-int here_doc(char **av)
+int	here_doc(char **av)
 {
-	char *str;
+	char	*str;
 	int		flag;
 	int		fd[2];
 
@@ -90,11 +92,11 @@ int here_doc(char **av)
 	fd[0] = open(av[1], O_CREAT | O_RDWR | O_TRUNC, 0777);
 	fd[1] = open(av[1], O_RDONLY, 0777);
 	unlink(av[1]);
-	if (ft_strcmp(av[1],"here_doc") == 0)
+	if (ft_strcmp(av[1], "here_doc") == 0)
 	{
 		while (1)
 		{
-			str = here_doc_reader(av,fd[0]);
+			str = here_doc_reader(av, fd[0]);
 			if (str == NULL)
 			{
 				close(fd[0]);
@@ -103,7 +105,7 @@ int here_doc(char **av)
 		}
 	}
 	else
-		return (close(fd[0]),0);
+		return (close(fd[0]), 0);
 	return (fd[1]);
 }
 

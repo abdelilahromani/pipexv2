@@ -6,7 +6,7 @@
 /*   By: aromani <aromani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 15:07:00 by aromani           #+#    #+#             */
-/*   Updated: 2025/01/25 21:35:50 by aromani          ###   ########.fr       */
+/*   Updated: 2025/01/26 20:26:32 by aromani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 char	*access_path(char *cmd, char *path)
 {
 	char	*p;
-	
+
 	p = pathchecker(cmd, path);
 	if (!p)
 		return (free(p), NULL);
@@ -57,7 +57,7 @@ char	*pathchecker(char *c, char *paths)
 		return (NULL);
 	while (pth[i])
 	{
-		if (ft_searchh(c,'/') != -1)
+		if (ft_searchh(c, '/') != -1)
 			tmp2 = ft_strdup(c);
 		else
 			tmp2 = ft_strjoin(pth[i], c);
@@ -80,7 +80,9 @@ char	*last_path(char **env, char **arg)
 	char	*tmp;
 
 	path = path_geter("PATH", env);
-	str = ft_substr(path, (ft_search(path, '=') + 1), ft_strlen(path));	
+	if (!path)
+		return (NULL);
+	str = ft_substr(path, (ft_search(path, '=') + 1), ft_strlen(path));
 	tmp = access_path(arg[0], str);
 	free (str);
 	if (!tmp)
@@ -88,12 +90,12 @@ char	*last_path(char **env, char **arg)
 	return (tmp);
 }
 
-int firstfcheck(char *av)
+int	firstfcheck(char *av)
 {
-	int fd;
+	int	fd;
 
 	fd = open(av, O_RDONLY);
 	if (fd < 0)
 		return (0);
-	return (close(fd),1);
+	return (close(fd), 1);
 }

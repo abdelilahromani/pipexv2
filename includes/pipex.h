@@ -6,7 +6,7 @@
 /*   By: aromani <aromani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 10:17:56 by aromani           #+#    #+#             */
-/*   Updated: 2025/01/26 18:00:09 by aromani          ###   ########.fr       */
+/*   Updated: 2025/01/26 19:48:30 by aromani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ char	*access_path(char *cmd, char *path);
 char	*path_geter(char *str, char **ev);
 char	*pathchecker(char *c, char *paths);
 char	*last_path(char **env, char **arg);
-int     firstfcheck(char *av);
-int     parent(char **av, char **env);
-int     parent2(char **av, char **env);
+int		firstfcheck(char *av);
+int		parent(char **av, char **env);
+int		parent2(char **av, char **env);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: aromani <aromani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 18:00:15 by aromani           #+#    #+#             */
-/*   Updated: 2025/01/26 18:00:45 by aromani          ###   ########.fr       */
+/*   Updated: 2025/01/26 19:45:25 by aromani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	main(int ac, char **av, char **env)
 {
 	int	fd[2];
 	int	id;
-	
+
 	if (ac == 5)
 	{
 		if (firstfcheck(av[1]) == 0)
